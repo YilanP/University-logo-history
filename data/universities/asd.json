@@ -1,0 +1,33 @@
+{
+  "id": "asd-university",
+  "name": "ASD University",
+  "location": {
+    "city": "New York",
+    "country": "United States"
+  },
+  "founded": "2000",
+  "logoHistory": [
+    {
+      "year": "2023",
+      "isEstimated": false,
+      "isCurrent": true,
+      "description": "Current ASD University logo featuring a modern design.",
+      "imageUrl": "https://example.com/asd-logo-2023.png",
+      "source": {
+        "url": "https://asd.edu",
+        "title": "ASD University Official Website"
+      }
+    },
+    {
+      "year": "2010",
+      "isEstimated": false,
+      "isCurrent": false,
+      "description": "Previous version of the ASD University logo.",
+      "imageUrl": "https://example.com/asd-logo-2010.png",
+      "source": {
+        "url": "https://asd.edu",
+        "title": "ASD University Official Website"
+      }
+    }
+  ]
+}

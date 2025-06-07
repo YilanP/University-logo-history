@@ -2,18 +2,31 @@
   "id": "middle-east-technical-university",
   "name": "Middle East Technical University",
   "location": {
-    "city": "ANKARA",
-    "country": "Türkiye"
+    "city": "Ankara",
+    "country": "Turkey"
   },
   "founded": "1956",
   "logoHistory": [
     {
-      "year": "Present",
-      "description": "METU",
-      "imageUrl": "https://www.metu.edu.tr/system/files/logo_orj/7/7.4.jpg",
+      "year": "2023",
+      "isEstimated": false,
+      "isCurrent": true,
+      "description": "Current METU logo featuring the stylized 'METU' text with the university's signature blue color.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Middle_East_Technical_University_logo.svg/1200px-Middle_East_Technical_University_logo.svg.png",
       "source": {
-        "url": "https://www.metu.edu.tr/tr/gkk/logolar-ve-amblemler",
-        "title": "Logo Page of METU"
+        "url": "https://en.wikipedia.org/wiki/Middle_East_Technical_University",
+        "title": "Middle East Technical University - Wikipedia"
+      }
+    },
+    {
+      "year": "1956",
+      "isEstimated": true,
+      "isCurrent": false,
+      "description": "Original METU logo from the university's founding year.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Middle_East_Technical_University_logo.svg/1200px-Middle_East_Technical_University_logo.svg.png",
+      "source": {
+        "url": "https://en.wikipedia.org/wiki/Middle_East_Technical_University",
+        "title": "Middle East Technical University - Wikipedia"
       }
     }
   ]

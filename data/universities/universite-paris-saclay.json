@@ -1,0 +1,22 @@
+{
+  "id": "université-paris-saclay",
+  "name": "Université Paris-Saclay",
+  "location": {
+    "city": "Paris",
+    "country": "France"
+  },
+  "founded": "2019",
+  "logoHistory": [
+    {
+      "year": "2000",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "",
+      "isCurrent": false,
+      "source": {
+        "url": "",
+        "title": ""
+      }
+    }
+  ]
+}

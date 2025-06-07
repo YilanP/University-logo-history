@@ -142,15 +142,17 @@
 }
 
 .estimated-date {
-    display: inline-block;
-    margin-left: 0.5rem;
     color: #666;
-    font-size: 0.9rem;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-left: 0.5rem;
 }
 
-.estimated-date::before {
-    content: "★";
-    margin-right: 0.25rem;
+.current-logo {
+    color: #28a745;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-left: 0.5rem;
 }
 
 .loading {

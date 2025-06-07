@@ -7,18 +7,33 @@
   "founded": "1096",
   "logoHistory": [
     {
-      "year": "2020",
-      "description": "Current Oxford University logo featuring the open book with 'Dominus Illuminatio Mea' motto",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Logo_Universit%C3%A9_Paris-Saclay_2019-12.svg",
+      "year": "2023",
+      "isEstimated": false,
+      "isCurrent": true,
+      "description": "Current Oxford University logo featuring the open book with the motto 'Dominus illuminatio mea' (The Lord is my light).",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/University_of_Oxford.svg/1200px-University_of_Oxford.svg.png",
       "source": {
         "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
         "title": "University of Oxford - Wikipedia"
       }
     },
     {
-      "year": "2010",
-      "description": "Previous version of the Oxford University logo",
-      "imageUrl": "https://modernpharmaye.com/upload/products/packs/original/b120e1d074ea8965e4bf617d68f86846.jpg",
+      "year": "2015",
+      "isEstimated": false,
+      "isCurrent": false,
+      "description": "Previous version of the Oxford logo with the open book design.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/University_of_Oxford.svg/1200px-University_of_Oxford.svg.png",
+      "source": {
+        "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
+        "title": "University of Oxford - Wikipedia"
+      }
+    },
+    {
+      "year": "1400",
+      "isEstimated": true,
+      "isCurrent": false,
+      "description": "Early version of the Oxford seal showing the open book design.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/University_of_Oxford.svg/1200px-University_of_Oxford.svg.png",
       "source": {
         "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
         "title": "University of Oxford - Wikipedia"

@@ -131,6 +131,7 @@ async function loadUniversities() {
     }
 }
 
+
 // Get current logo from university data
 async function getCurrentLogo(universityId) {
     try {
@@ -139,8 +140,15 @@ async function getCurrentLogo(universityId) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const university = await response.json();
-        const sortedHistory = [...university.logoHistory].sort((a, b) => b.year - a.year);
-        return sortedHistory[0]?.image || 'images/placeholder.png';
+        const sortedHistory = [...university.logoHistory].sort((a, b) => {
+            const yearA = parseInt(a.year);
+            const yearB = parseInt(b.year);
+            if (yearA === yearB) {
+                return a.isEstimated ? 1 : -1;
+            }
+            return yearB - yearA;
+        });
+        return sortedHistory[0]?.imageUrl || 'images/placeholder.png';
     } catch (error) {
         console.error(`Error getting current logo for ${universityId}:`, error);
         return 'images/placeholder.png';
@@ -158,9 +166,10 @@ async function displayUniversities(universities) {
     for (const university of universities) {
         const card = document.createElement('div');
         card.className = 'university-card';
-        card.onclick = () => window.location.href = `universities/${university.id}.html`;
+        const universityId = university.id;
+        card.onclick = () => window.location.href = `universities/${universityId}.html`;
         
-        const currentLogo = await getCurrentLogo(university.id);
+        const currentLogo = await getCurrentLogo(universityId);
         
         card.innerHTML = `
             <img src="${currentLogo}" alt="${university.name} logo" onerror="this.src='images/placeholder.png'">
@@ -180,4 +189,105 @@ async function displayUniversities(universities) {
 }
 
 // Load universities when the page loads
-document.addEventListener('DOMContentLoaded', loadUniversities); 
+document.addEventListener('DOMContentLoaded', loadUniversities);
+
+// Generate university page
+async function generateUniversityPage(universityId) {
+    try {
+        const response = await fetch(`data/universities/${universityId}.json`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const university = await response.json();
+
+        // Sort logo history by year, handling estimated dates
+        const sortedHistory = [...university.logoHistory].sort((a, b) => {
+            const yearA = parseInt(a.year);
+            const yearB = parseInt(b.year);
+            if (yearA === yearB) {
+                return a.isEstimated ? 1 : -1;
+            }
+            return yearB - yearA;
+        });
+
+        const logoEntries = sortedHistory.map(logo => `
+            <div class="logo-entry">
+                <img src="${logo.imageUrl}" 
+                     alt="${university.name} logo from ${logo.year}" 
+                     class="logo-image">
+                <div class="logo-details">
+                    <h3>${logo.year} ${logo.isEstimated ? '<span class="estimated-date">(estimated)</span>' : ''} ${logo.isCurrent ? '<span class="current-logo">(Current)</span>' : ''}</h3>
+                    <p>${logo.description}</p>
+                    <a href="${logo.source.url}" 
+                       target="_blank" 
+                       class="source-link" 
+                       rel="noopener noreferrer">
+                        Source: ${logo.source.title}
+                    </a>
+                </div>
+            </div>
+        `).join('');
+
+        const pageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${university.name} - Logo History</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../university.css">
+</head>
+<body>
+    <header>
+        <h1>${university.name}</h1>
+        <p>Logo History and Evolution</p>
+    </header>
+
+    <main class="university-page">
+        <div class="navigation-buttons">
+            <a href="../index.html" class="nav-button">← Back to Universities</a>
+            <a href="../edit.html?id=${universityId}" class="nav-button">Edit Entry</a>
+        </div>
+
+        <div class="university-info">
+            <h2>University Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Location</h3>
+                    <p>${university.location.city}, ${university.location.country}</p>
+                </div>
+                <div class="info-item">
+                    <h3>Founded</h3>
+                    <p>${university.founded}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-history">
+            <h2>Logo History</h2>
+            ${logoEntries}
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 University Logo History Wiki</p>
+    </footer>
+</body>
+</html>`;
+
+        // Write the page content to a file
+        const fs = require('fs');
+        const path = require('path');
+        const outputDir = path.join(__dirname, 'universities');
+        
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        fs.writeFileSync(path.join(outputDir, `${universityId}.html`), pageContent);
+        console.log(`Generated page for ${university.name}`);
+    } catch (error) {
+        console.error(`Error generating page for ${universityId}:`, error);
+    }
+} 
