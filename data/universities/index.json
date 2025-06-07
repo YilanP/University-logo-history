@@ -10,6 +10,15 @@
       "founded": "1636"
     },
     {
+      "id": "middle-east-technical-university",
+      "name": "Middle East Technical University",
+      "location": {
+        "city": "ANKARA",
+        "country": "Türkiye"
+      },
+      "founded": "1956"
+    },
+    {
       "id": "university-of-oxford",
       "name": "University of Oxford",
       "location": {
