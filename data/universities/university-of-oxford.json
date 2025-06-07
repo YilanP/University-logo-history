@@ -1,5 +1,4 @@
 {
-  "id": "university-of-oxford",
   "name": "University of Oxford",
   "location": {
     "city": "Oxford",
@@ -19,11 +18,12 @@
     {
       "year": "2010",
       "description": "Previous version of the Oxford University logo",
-      "imageUrl": "https://bcassetcdn.com/public/blog/wp-content/uploads/2022/05/11161547/Boston-University-Logo.png",
+      "imageUrl": "https://modernpharmaye.com/upload/products/packs/original/b120e1d074ea8965e4bf617d68f86846.jpg",
       "source": {
         "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
         "title": "University of Oxford - Wikipedia"
       }
     }
-  ]
+  ],
+  "id": "university-of-oxford"
 }
