@@ -7,31 +7,32 @@ from PIL import Image
 import io
 import unicodedata
 import shutil
+from urllib.parse import urlparse
+import mimetypes
 
 
 def download_image(url, output_path):
+    """Download an image from a URL and save it to the specified path."""
     try:
-        # Set up headers with User-Agent
-        headers = {
-            'User-Agent': 'University Logo History Wiki Bot/1.0 (https://github.com/yourusername/university-logo-website; your@email.com)'
-        }
-        
-        response = requests.get(url, headers=headers, stream=True)
+        response = requests.get(url, stream=True)
         response.raise_for_status()
         
-        # Create directory if it doesn't exist
+        # Get the content type from the response headers
+        content_type = response.headers.get('content-type', '')
+        if not content_type.startswith('image/'):
+            print(f"Warning: URL {url} does not point to an image (content-type: {content_type})")
+            return False
+        
+        # Create the directory if it doesn't exist
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         
-        # Save the image in its original format
+        # Save the image
         with open(output_path, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
-        
-        print(f"Successfully downloaded image to {output_path}")
         return True
-        
     except Exception as e:
-        print(f"Error downloading image from {url}: {str(e)}")
+        print(f"Error downloading image from {url}: {e}")
         return False
 
 def load_json_file(file_path):
@@ -52,18 +53,51 @@ def sanitize_id(name):
 
 def generate_university_page(university_id, university_data):
     """Generate HTML page for a university."""
+    # Create images directory for this university
+    images_dir = Path('images') / university_id
+    images_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Download and save images
+    for logo in university_data['logoHistory']:
+        image_url = logo['imageUrl']
+        # Get file extension from URL or content type
+        parsed_url = urlparse(image_url)
+        file_extension = os.path.splitext(parsed_url.path)[1]
+        if not file_extension:
+            # Try to get extension from content type
+            response = requests.head(image_url)
+            content_type = response.headers.get('content-type', '')
+            file_extension = mimetypes.guess_extension(content_type) or '.png'
+        
+        # Create image filename using year
+        image_filename = f"{logo['year']}{file_extension}"
+        image_path = images_dir / image_filename
+        
+        # Download image if it doesn't exist
+        if not image_path.exists():
+            if not download_image(image_url, str(image_path)):
+                # Use placeholder if download fails
+                placeholder_path = Path('images/placeholder.png')
+                if placeholder_path.exists():
+                    shutil.copy(str(placeholder_path), str(image_path))
+    
     # Sort logo history by year (newest first), handling estimated dates
     sorted_history = sorted(university_data['logoHistory'], 
                           key=lambda x: (int(x['year']), x.get('isEstimated', False)),
-                          reverse=True)  # Add reverse=True to sort newest first
+                          reverse=True)
     
     logo_entries = []
     for logo in sorted_history:
         estimated_mark = ' <span class="estimated-date">(estimated)</span>' if logo.get('isEstimated', False) else ''
         current_mark = ' <span class="current-logo">(Current)</span>' if logo.get('isCurrent', False) else ''
+        
+        # Get the image path relative to the HTML file
+        image_filename = f"{logo['year']}{os.path.splitext(urlparse(logo['imageUrl']).path)[1]}"
+        image_path = f"../images/{university_id}/{image_filename}"
+        
         logo_entries.append(f'''
             <div class="logo-entry">
-                <img src="{logo['imageUrl']}" 
+                <img src="{image_path}" 
                      alt="{university_data['name']} logo from {logo['year']}" 
                      class="logo-image">
                 <div class="logo-details">

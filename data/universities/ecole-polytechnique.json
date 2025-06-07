@@ -1,0 +1,110 @@
+{
+  "id": "ecole-polytechnique",
+  "name": "École polytechnique",
+  "location": {
+    "city": "Palaiseau",
+    "country": "France"
+  },
+  "founded": "1794",
+  "logoHistory": [
+    {
+      "year": "2019",
+      "isEstimated": false,
+      "description": "l'X became a founding member of Institut Polytechnique de Paris.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/%C3%89cole_polytechnique_signature.svg",
+      "isCurrent": true,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "2013",
+      "isEstimated": false,
+      "description": "Became a member of Université Paris-Saclay.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/2/2a/Polytechnique_logo_2013.svg",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1994",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/e/e6/Polytechnique_logo_1994.svg",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1979",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/b/b1/Polytechnique_logo_1979.svg",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1965",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/0/08/Polytechnique_logo_1965.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1959",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/4/44/Polytechnique_logo_1959.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1926",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/3/31/Polytechnique_logo_1926.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1830",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/1/17/Polytechnique_logo_1830.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    },
+    {
+      "year": "1804",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/fr/c/ca/Polytechnique_logo_1804.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://gargantua.polytechnique.fr/siatel-web/app/linkto/mICYYYTNxY?aw=1",
+        "title": "Polytechnique"
+      }
+    }
+  ]
+}

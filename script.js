@@ -146,7 +146,7 @@ async function getCurrentLogo(universityId) {
             if (yearA === yearB) {
                 return a.isEstimated ? 1 : -1;
             }
-            return yearB - yearA;
+            return yearB - yearA;  // Sort in descending order (newest first)
         });
         return sortedHistory[0]?.imageUrl || 'images/placeholder.png';
     } catch (error) {

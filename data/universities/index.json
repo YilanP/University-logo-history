@@ -1,15 +1,6 @@
 {
   "universities": [
     {
-      "id": "asd-university",
-      "name": "ASD University",
-      "location": {
-        "city": "New York",
-        "country": "United States"
-      },
-      "founded": "2000"
-    },
-    {
       "id": "harvard-university",
       "name": "Harvard University",
       "location": {
@@ -44,6 +35,15 @@
         "country": "France"
       },
       "founded": "2019"
+    },
+    {
+      "id": "ecole-polytechnique",
+      "name": "École polytechnique",
+      "location": {
+        "city": "Palaiseau",
+        "country": "France"
+      },
+      "founded": "1794"
     }
   ]
 }
