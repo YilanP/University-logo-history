@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Oxford - Logo History</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../submit.css">
+</head>
+<body>
+    <header>
+        <h1>University of Oxford</h1>
+        <p>Founded in 1096</p>
+        <p>Location: Oxford, United Kingdom</p>
+    </header>
+
+    <main>
+        <div class="university-content">
+            <div class="navigation-buttons">
+                <a href="../index.html" class="nav-button">← Back to Universities</a>
+                <a href="../edit.html?id=oxford" class="nav-button edit-button">Edit Entry</a>
+            </div>
+
+            <div class="logo-history">
+                <h2>Logo History</h2>
+                <div id="logoHistory">
+                    <!-- Logo history will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 University Logo History Wiki</p>
+    </footer>
+
+    <script>
+        // Load logo history data
+        async function loadLogoHistory() {
+            try {
+                const response = await fetch('../data/universities/oxford.json');
+                const data = await response.json();
+                
+                const logoHistory = document.getElementById('logoHistory');
+                logoHistory.innerHTML = data.logoHistory.map(logo => `
+                    <div class="logo-entry">
+                        <div class="logo-image">
+                            <img src="../images/oxford/2015.png" 
+                                 alt="University of Oxford logo from 2015"
+                                 onerror="this.src='../images/placeholder.png'">
+                        </div>
+                        <div class="logo-info">
+                            <h3>2015 </h3>
+                            <p>Contemporary simplified logo design</p>
+                            <div class="source">
+                                <a href="https://www.ox.ac.uk/brand" target="_blank" rel="noopener noreferrer">
+                                    Source: University of Oxford Brand Guidelines
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading logo history:', error);
+                document.getElementById('logoHistory').innerHTML = 
+                    '<p class="error">Error loading logo history. Please try again later.</p>';
+            }
+        }
+
+        // Load logo history when page loads
+        document.addEventListener('DOMContentLoaded', loadLogoHistory);
+    </script>
+</body>
+</html>

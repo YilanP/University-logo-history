@@ -1,0 +1,22 @@
+{
+  "universities": [
+    {
+      "id": "harvard-university",
+      "name": "Harvard University",
+      "location": {
+        "city": "Cambridge",
+        "country": "United States"
+      },
+      "founded": 1636
+    },
+    {
+      "id": "university-of-oxford",
+      "name": "University of Oxford",
+      "location": {
+        "city": "Oxford",
+        "country": "United Kingdom"
+      },
+      "founded": 1096
+    }
+  ]
+}

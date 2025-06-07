@@ -1,0 +1,52 @@
+{
+    "universities": [
+        {
+            "id": "harvard",
+            "name": "Harvard University",
+            "location": "Cambridge, Massachusetts",
+            "founded": 1636,
+            "currentLogo": "images/harvard/current.png",
+            "logoHistory": [
+                {
+                    "year": 1636,
+                    "description": "Original seal featuring the Latin motto 'Veritas'",
+                    "image": "images/harvard/1636.png"
+                },
+                {
+                    "year": 1836,
+                    "description": "Updated seal with three books and the motto 'Christo et Ecclesiae'",
+                    "image": "images/harvard/1836.png"
+                },
+                {
+                    "year": 2014,
+                    "description": "Modern simplified version of the seal",
+                    "image": "images/harvard/2014.png"
+                }
+            ]
+        },
+        {
+            "id": "oxford",
+            "name": "University of Oxford",
+            "location": "Oxford, England",
+            "founded": 1096,
+            "currentLogo": "images/oxford/current.png",
+            "logoHistory": [
+                {
+                    "year": 1400,
+                    "description": "Early coat of arms featuring an open book",
+                    "image": "images/oxford/1400.png"
+                },
+                {
+                    "year": 1900,
+                    "description": "Modernized version of the coat of arms",
+                    "image": "images/oxford/1900.png"
+                },
+                {
+                    "year": 2015,
+                    "description": "Contemporary simplified logo design",
+                    "image": "images/oxford/2015.png"
+                }
+            ]
+        }
+    ]
+} 
