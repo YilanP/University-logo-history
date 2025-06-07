@@ -5,38 +5,25 @@
     "city": "Cambridge",
     "country": "United States"
   },
-  "founded": 1636,
-  "currentLogo": "images/harvard/current.png",
+  "founded": "1636",
   "logoHistory": [
     {
-      "year": 1636,
-      "description": "Original seal featuring the Latin motto 'Veritas'",
-      "image": "images/harvard/1636.png",
+      "year": "2020",
+      "description": "Current Harvard University logo featuring the shield with 'Veritas' motto",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png",
       "source": {
-        "url": "https://library.harvard.edu/harvard-seal",
-        "title": "Harvard Library Archives"
-      },
-      "isEstimated": false
+        "url": "https://en.wikipedia.org/wiki/Harvard_University",
+        "title": "Harvard University - Wikipedia"
+      }
     },
     {
-      "year": 1836,
-      "description": "Updated seal with three books and the motto 'Christo et Ecclesiae'",
-      "image": "images/harvard/1836.png",
+      "year": "2010",
+      "description": "Previous version of the Harvard shield logo",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png",
       "source": {
-        "url": "https://library.harvard.edu/harvard-seal-history",
-        "title": "Harvard Library Archives"
-      },
-      "isEstimated": false
-    },
-    {
-      "year": 2014,
-      "description": "Modern simplified version of the seal",
-      "image": "images/harvard/2014.png",
-      "source": {
-        "url": "https://brand.harvard.edu/guidelines/using-our-logo",
-        "title": "Harvard Brand Guidelines"
-      },
-      "isEstimated": false
+        "url": "https://en.wikipedia.org/wiki/Harvard_University",
+        "title": "Harvard University - Wikipedia"
+      }
     }
   ]
 }

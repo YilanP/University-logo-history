@@ -6,6 +6,7 @@ from pathlib import Path
 from PIL import Image
 import io
 import unicodedata
+import shutil
 
 def sanitize_filename(name):
     # Convert to lowercase and replace spaces with hyphens
@@ -14,23 +15,29 @@ def sanitize_filename(name):
     sanitized = ''.join(c for c in sanitized if c.isalnum() or c == '-')
     return sanitized
 
-def download_image(url, save_path):
+def download_image(url, output_path):
     try:
-        response = requests.get(url, timeout=10)
+        # Set up headers with User-Agent
+        headers = {
+            'User-Agent': 'University Logo History Wiki Bot/1.0 (https://github.com/yourusername/university-logo-website; your@email.com)'
+        }
+        
+        response = requests.get(url, headers=headers, stream=True)
         response.raise_for_status()
         
-        # Check if it's an SVG file
-        if url.lower().endswith('.svg') or 'svg' in response.headers.get('content-type', '').lower():
-            with open(save_path, 'wb') as f:
-                f.write(response.content)
-            return True
-            
-        # For other image types, verify with PIL
-        img = Image.open(io.BytesIO(response.content))
-        img.save(save_path)
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        
+        # Save the image in its original format
+        with open(output_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        
+        print(f"Successfully downloaded image to {output_path}")
         return True
+        
     except Exception as e:
-        print(f"Error downloading image {url}: {str(e)}")
+        print(f"Error downloading image from {url}: {str(e)}")
         return False
 
 def load_json_file(file_path):
@@ -51,10 +58,24 @@ def generate_university_page(university_data, output_dir):
     
     # Download and save images
     for logo in university_data['logoHistory']:
-        image_path = os.path.join(images_dir, f"{logo['year']}.png")
+        # Get the original file extension from the URL
+        image_url = logo['imageUrl']
+        file_extension = os.path.splitext(image_url.split('/')[-1])[1]
+        if not file_extension:
+            file_extension = '.png'  # Default to .png if no extension found
+        
+        # Create a filename based on the year with original extension
+        image_filename = f"{logo['year']}{file_extension}"
+        image_path = os.path.join(images_dir, image_filename)
+        
+        # Only download if the image doesn't exist
         if not os.path.exists(image_path):
-            if not download_image(logo['source']['url'], image_path):
+            if not download_image(logo['imageUrl'], image_path):
                 print(f"Failed to download image for {university_data['name']} - {logo['year']}")
+                # Create a placeholder image if download fails
+                placeholder_path = os.path.join('images', 'placeholder.png')
+                if os.path.exists(placeholder_path):
+                    shutil.copy(placeholder_path, image_path)
     
     # Generate HTML content
     html_content = f"""<!DOCTYPE html>
@@ -120,9 +141,15 @@ def generate_logo_history_html(university_data):
         university_id = sanitize_filename(university_data['name'])
         estimated_html = '<span class="estimated-date">(estimated)</span>' if logo.get('isEstimated') else ''
         
+        # Get the original file extension from the URL
+        image_url = logo['imageUrl']
+        file_extension = os.path.splitext(image_url.split('/')[-1])[1]
+        if not file_extension:
+            file_extension = '.png'  # Default to .png if no extension found
+        
         entry = f"""
             <div class="logo-entry">
-                <img src="../images/{university_id}/{logo['year']}.png" 
+                <img src="../images/{university_id}/{logo['year']}{file_extension}" 
                      alt="{university_data['name']} logo from {logo['year']}" 
                      class="logo-image">
                 <div class="logo-details">

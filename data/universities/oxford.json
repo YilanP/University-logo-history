@@ -5,38 +5,25 @@
     "city": "Oxford",
     "country": "United Kingdom"
   },
-  "founded": 1096,
-  "currentLogo": "images/oxford/current.png",
+  "founded": "1096",
   "logoHistory": [
     {
-      "year": 1400,
-      "description": "Early coat of arms featuring an open book",
-      "image": "images/oxford/1400.png",
+      "year": "2020",
+      "description": "Current Oxford University logo featuring the open book with 'Dominus Illuminatio Mea' motto",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Logo_Universit%C3%A9_Paris-Saclay_2019-12.svg",
       "source": {
-        "url": "https://en.wikipedia.org/wiki/Paris-Saclay_University#/media/File:Logo_Universit%C3%A9_Paris-Saclay_(ComUE).svg",
-        "title": "University of Oxford Archives"
-      },
-      "isEstimated": true
+        "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
+        "title": "University of Oxford - Wikipedia"
+      }
     },
     {
-      "year": 1900,
-      "description": "Modernized version of the coat of arms",
-      "image": "images/oxford/1900.png",
+      "year": "2010",
+      "description": "Previous version of the Oxford University logo",
+      "imageUrl": "https://bcassetcdn.com/public/blog/wp-content/uploads/2022/05/11161547/Boston-University-Logo.png",
       "source": {
-        "url": "https://www.ox.ac.uk/about/organisation/history",
-        "title": "University of Oxford Archives"
-      },
-      "isEstimated": false
-    },
-    {
-      "year": 2015,
-      "description": "Contemporary simplified logo design",
-      "image": "images/oxford/2015.png",
-      "source": {
-        "url": "https://www.ox.ac.uk/brand",
-        "title": "University of Oxford Brand Guidelines"
-      },
-      "isEstimated": false
+        "url": "https://en.wikipedia.org/wiki/University_of_Oxford",
+        "title": "University of Oxford - Wikipedia"
+      }
     }
   ]
 }

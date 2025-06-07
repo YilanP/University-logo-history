@@ -7,7 +7,7 @@
         "city": "Cambridge",
         "country": "United States"
       },
-      "founded": 1636
+      "founded": "1636"
     },
     {
       "id": "university-of-oxford",
@@ -16,7 +16,7 @@
         "city": "Oxford",
         "country": "United Kingdom"
       },
-      "founded": 1096
+      "founded": "1096"
     }
   ]
 }
