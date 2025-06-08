@@ -1,0 +1,23 @@
+{
+  "id": "turkmen-agricultural-institute",
+  "name": "Turkmen agricultural institute",
+  "location": {
+    "country": "Tukmenistan",
+    "city": "Dashoguz"
+  },
+  "founded": "2011",
+  "logoHistory": [
+    {
+      "year": "2011",
+      "isEstimated": true,
+      "description": "The logo of the Turkmen Agricultural Institute is an eight-pointed green star, a symbol of Islam known as the Rub el Hizb. At its center, an open book signifies knowledge, surrounded by cotton bolls and sheaves of wheat. These elements represent Turkmenistan's key agricultural products and the institute's focus, while also echoing symbols from the nation's Soviet history. The institute's name is inscribed in Turkmen within the central circle.",
+      "imageUrl": "https://github.com/user-attachments/assets/492f9e47-d503-40b8-823d-665b9d320c4d",
+      "isCurrent": true,
+      "source": {
+        "url": "https://tohi.edu.tm/",
+        "title": "TOHI (Official Institute Website)"
+      }
+    }
+  ],
+  "specialOccasions": []
+}
