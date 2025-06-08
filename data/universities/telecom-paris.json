@@ -1,0 +1,30 @@
+{
+  "id": "telecom-paris",
+  "name": "Télécom Paris",
+  "location": {
+    "city": "Palaiseau",
+    "country": "France"
+  },
+  "founded": "1876",
+  "logoHistory": [
+    {
+      "year": "2019",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://www.telecom-paris.fr/wp-content-EvDsK19/uploads/2024/01/TelecomParis_endossem_IPP_RVB_200pix.png",
+      "isCurrent": false,
+      "source": {
+        "url": "https://www.telecom-paris.fr/fr/ecole/bref/logos",
+        "title": "Telecom Paris Logotypes"
+      }
+    }
+  ],
+  "specialOccasions": [],
+  "predecessors": [],
+  "parentInstitutions": [
+    {
+      "name": "Institut Polytechnique de Paris",
+      "year": "2019"
+    }
+  ]
+}

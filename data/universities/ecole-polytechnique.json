@@ -106,5 +106,13 @@
         "title": "Polytechnique"
       }
     }
+  ],
+  "specialOccasions": [],
+  "predecessors": [],
+  "parentInstitutions": [
+    {
+      "name": "Institut Polytechnique de Paris",
+      "year": "2019"
+    }
   ]
 }

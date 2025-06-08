@@ -1,6 +1,15 @@
 {
   "universities": [
     {
+      "id": "institut-polytechnique-de-paris",
+      "name": "Institut Polytechnique de Paris",
+      "location": {
+        "country": "France",
+        "city": "Palaiseau"
+      },
+      "founded": "2019"
+    },
+    {
       "id": "sabanc-university",
       "name": "Sabancı University",
       "location": {
@@ -17,6 +26,15 @@
         "city": "Dashoguz"
       },
       "founded": "2011"
+    },
+    {
+      "id": "telecom-paris",
+      "name": "Télécom Paris",
+      "location": {
+        "city": "Palaiseau",
+        "country": "France"
+      },
+      "founded": "1876"
     },
     {
       "id": "ecole-polytechnique",

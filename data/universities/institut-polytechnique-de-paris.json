@@ -1,0 +1,34 @@
+{
+  "id": "institut-polytechnique-de-paris",
+  "name": "Institut Polytechnique de Paris",
+  "location": {
+    "country": "France",
+    "city": "Palaiseau"
+  },
+  "founded": "2019",
+  "logoHistory": [
+    {
+      "year": "2019",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Institut-polytechnique-de-paris-logo-vector.svg",
+      "isCurrent": false,
+      "source": {
+        "url": "https://www.ip-paris.fr/sites/default/files/Charte%20Graphique%202025/IP-PARIS_CHARTE-GRAPHIQUE_2025.pdf",
+        "title": "IP Paris Charte Graphique"
+      }
+    }
+  ],
+  "specialOccasions": [],
+  "predecessors": [
+    {
+      "name": "Télécom Paris",
+      "year": "2019",
+      "description": "-",
+      "source": {
+        "url": "https://www.ip-paris.fr/sites/default/files/presse/document/2020-10/19_06_03_CP_Cr%C3%A9ation%20officielle-IP-Paris.pdf",
+        "title": "https://www.ip-paris.fr/sites/default/files/presse/document/2020-10/19_06_03_CP_Cr%C3%A9ation%20offi"
+      }
+    }
+  ]
+}

@@ -238,4 +238,96 @@
 
 .special-occasion-entry .remove-button:hover {
     background-color: #c82333;
+}
+
+.predecessors-title {
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.predecessor-entry {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.predecessor-entry h3 {
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.predecessor-entry p {
+    margin: 0 0 1rem;
+    color: #666;
+}
+
+.predecessor-link {
+    display: inline-block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.predecessor-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.logo-image-link {
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.logo-image-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-image-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.parent-institutions-title {
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.parent-institution-entry {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.parent-institution-entry h3 {
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.parent-institution-entry p {
+    margin: 0 0 1rem;
+    color: #666;
+}
+
+.parent-link {
+    display: inline-block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.parent-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 } 

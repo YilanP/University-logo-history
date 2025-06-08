@@ -205,6 +205,61 @@
     color: #856404;
 }
 
+.predecessor-entry {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.predecessor-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.predecessor-entry h3 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.predecessor-entry .form-group {
+    margin-bottom: 1rem;
+}
+
+.predecessor-entry .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.predecessor-entry input,
+.predecessor-entry textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.predecessor-entry textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.predecessor-entry .remove-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.predecessor-entry .remove-button:hover {
+    background: #c82333;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .edit-page {

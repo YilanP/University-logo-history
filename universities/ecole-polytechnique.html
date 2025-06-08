@@ -6,6 +6,52 @@
     <title>École polytechnique - Logo History</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../university.css">
+    <style>
+        .predecessor-entry,
+        .parent-institution-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .predecessor-info,
+        .parent-info {
+            flex: 1;
+        }
+        
+        .predecessor-logo,
+        .parent-logo {
+            flex: 0 0 200px;
+        }
+        
+        .predecessor-logo img,
+        .parent-logo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .predecessor-entry,
+            .parent-institution-entry {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .predecessor-logo,
+            .parent-logo {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -33,13 +79,36 @@
             </div>
         </div>
 
+        <h2 class="parent-institutions-title">Parent Institutions</h2>
+                        <div class="parent-institution-entry">
+                            <div class="parent-info">
+                                <h3>Institut Polytechnique de Paris</h3>
+                                <p>Year: 2019</p>
+                                <a href="../universities/institut-polytechnique-de-paris.html" class="parent-link">
+                                    View Parent Institution →
+                                </a>
+                            </div>
+                            <div class="parent-logo">
+                                <a href="../images/ecole-polytechnique/parent_institut-polytechnique-de-paris.svg" target="_blank" class="logo-image-link">
+                                    <img src="../images/ecole-polytechnique/parent_institut-polytechnique-de-paris.svg" 
+                                         alt="Current logo of Institut Polytechnique de Paris" 
+                                         class="logo-image">
+                                </a>
+                            </div>
+                        </div>
+                    
+
+        
+
         <div class="logo-history">
             <h2>Logo History</h2>
             
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/2019.svg" 
-                     alt="École polytechnique logo from 2019" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/2019.svg" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/2019.svg" 
+                         alt="École polytechnique logo from 2019" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>2019 <span class="current-logo">(Current)</span></h3>
                     <p>l'X became a founding member of Institut Polytechnique de Paris.</p>
@@ -53,9 +122,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/2013.svg" 
-                     alt="École polytechnique logo from 2013" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/2013.svg" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/2013.svg" 
+                         alt="École polytechnique logo from 2013" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>2013</h3>
                     <p>Became a member of Université Paris-Saclay.</p>
@@ -69,9 +140,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1994.svg" 
-                     alt="École polytechnique logo from 1994" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1994.svg" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1994.svg" 
+                         alt="École polytechnique logo from 1994" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1994</h3>
                     <p></p>
@@ -85,9 +158,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1979.svg" 
-                     alt="École polytechnique logo from 1979" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1979.svg" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1979.svg" 
+                         alt="École polytechnique logo from 1979" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1979</h3>
                     <p></p>
@@ -101,9 +176,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1965.png" 
-                     alt="École polytechnique logo from 1965" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1965.png" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1965.png" 
+                         alt="École polytechnique logo from 1965" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1965</h3>
                     <p></p>
@@ -117,9 +194,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1959.png" 
-                     alt="École polytechnique logo from 1959" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1959.png" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1959.png" 
+                         alt="École polytechnique logo from 1959" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1959</h3>
                     <p></p>
@@ -133,9 +212,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1926.png" 
-                     alt="École polytechnique logo from 1926" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1926.png" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1926.png" 
+                         alt="École polytechnique logo from 1926" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1926</h3>
                     <p></p>
@@ -149,9 +230,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1830.png" 
-                     alt="École polytechnique logo from 1830" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1830.png" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1830.png" 
+                         alt="École polytechnique logo from 1830" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1830</h3>
                     <p></p>
@@ -165,9 +248,11 @@
             </div>
         
             <div class="logo-entry">
-                <img src="../images/ecole-polytechnique/1804.png" 
-                     alt="École polytechnique logo from 1804" 
-                     class="logo-image">
+                <a href="../images/ecole-polytechnique/1804.png" target="_blank" class="logo-image-link">
+                    <img src="../images/ecole-polytechnique/1804.png" 
+                         alt="École polytechnique logo from 1804" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>1804</h3>
                     <p></p>

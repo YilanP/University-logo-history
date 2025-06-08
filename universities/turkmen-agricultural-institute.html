@@ -6,6 +6,52 @@
     <title>Turkmen Agricultural Institute - Logo History</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../university.css">
+    <style>
+        .predecessor-entry,
+        .parent-institution-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .predecessor-info,
+        .parent-info {
+            flex: 1;
+        }
+        
+        .predecessor-logo,
+        .parent-logo {
+            flex: 0 0 200px;
+        }
+        
+        .predecessor-logo img,
+        .parent-logo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .predecessor-entry,
+            .parent-institution-entry {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .predecessor-logo,
+            .parent-logo {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -33,13 +79,19 @@
             </div>
         </div>
 
+        
+
+        
+
         <div class="logo-history">
             <h2>Logo History</h2>
             
             <div class="logo-entry">
-                <img src="../images/turkmen-agricultural-institute/2011.png" 
-                     alt="Turkmen Agricultural Institute logo from 2011" 
-                     class="logo-image">
+                <a href="../images/turkmen-agricultural-institute/2011.png" target="_blank" class="logo-image-link">
+                    <img src="../images/turkmen-agricultural-institute/2011.png" 
+                         alt="Turkmen Agricultural Institute logo from 2011" 
+                         class="logo-image">
+                </a>
                 <div class="logo-details">
                     <h3>2011 <span class="estimated-date">(estimated)</span> <span class="current-logo">(Current)</span></h3>
                     <p>The logo of the Turkmen Agricultural Institute is an eight-pointed green star, a symbol of Islam known as the Rub el Hizb. At its center, an open book signifies knowledge, surrounded by cotton bolls and sheaves of wheat. These elements represent Turkmenistan's key agricultural products and the institute's focus, while also echoing symbols from the nation's Soviet history. The institute's name is inscribed in Turkmen within the central circle.</p>
