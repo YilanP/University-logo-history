@@ -52,20 +52,27 @@ function createCountryFilter(universities) {
     return filterContainer;
 }
 
+// Normalize text by removing accents and converting to lowercase
+function normalizeText(text) {
+    return text.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .toLowerCase();
+}
+
 // Filter and display universities based on search and country filter
 function filterAndDisplayUniversities() {
     if (!universitiesCache) return;
     
     const searchInput = document.querySelector('.search-input');
-    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    const searchTerm = searchInput ? normalizeText(searchInput.value) : '';
     const countryFilter = document.getElementById('countryFilter');
     const selectedCountry = countryFilter ? countryFilter.value : '';
     
     const filteredUniversities = universitiesCache.filter(university => {
         const matchesSearch = 
-            university.name.toLowerCase().includes(searchTerm) ||
-            university.location.city.toLowerCase().includes(searchTerm) ||
-            university.location.country.toLowerCase().includes(searchTerm);
+            normalizeText(university.name).includes(searchTerm) ||
+            normalizeText(university.location.city).includes(searchTerm) ||
+            normalizeText(university.location.country).includes(searchTerm);
         
         const matchesCountry = !selectedCountry || university.location.country === selectedCountry;
         
@@ -101,6 +108,7 @@ async function loadUniversities() {
         searchInput.placeholder = 'Search universities...';
         searchInput.className = 'search-input';
         searchContainer.appendChild(searchInput);
+        searchContainer.sty
         
         // Create country filter
         const countryFilter = createCountryFilter(universitiesCache);

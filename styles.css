@@ -33,13 +33,19 @@ header h1 {
 }
 
 .search-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto 2rem;
-    padding: 0 1rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
 }
 
-#searchInput {
-    width: 100%;
+.search-input {
+    flex: 1;
     padding: 0.8rem;
     font-size: 1rem;
     border: 2px solid #ddd;
@@ -47,7 +53,7 @@ header h1 {
     transition: border-color 0.3s ease;
 }
 
-#searchInput:focus {
+.search-input:focus {
     outline: none;
     border-color: var(--secondary-color);
 }
@@ -139,6 +145,15 @@ footer {
     header h1 {
         font-size: 2rem;
     }
+
+    .search-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .country-filter {
+        width: 100%;
+    }
 }
 
 .load-more-button {
@@ -170,7 +185,7 @@ footer {
 }
 
 .country-filter {
-    margin-top: 1rem;
+    min-width: 200px;
 }
 
 .country-filter select {
