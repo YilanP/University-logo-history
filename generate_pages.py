@@ -165,7 +165,7 @@ def generate_university_page(university_id, university_data):
         
         # Get the image path relative to the HTML file
         image_path = downloaded_images[logo['year']]
-        relative_path = f"../{os.path.relpath(image_path, 'universities')}"
+        relative_path = f"../images/{university_id}/{Path(image_path).name}"
         
         logo_entries.append(f'''
             <div class="logo-entry">
@@ -193,7 +193,7 @@ def generate_university_page(university_id, university_data):
             
             # Get the image path relative to the HTML file
             image_path = downloaded_images[f"special_{occasion['year']}"]
-            relative_path = f"../{os.path.relpath(image_path, 'universities')}"
+            relative_path = f"../images/{university_id}/{Path(image_path).name}"
             
             logo_entries.append(f'''
                 <div class="logo-entry special-occasion">
