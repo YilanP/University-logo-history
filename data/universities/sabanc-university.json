@@ -1,0 +1,34 @@
+{
+  "id": "sabanc-university",
+  "name": "Sabancı University",
+  "location": {
+    "country": "Turkey",
+    "city": "Istanbul"
+  },
+  "founded": "1999",
+  "logoHistory": [
+    {
+      "year": "1999",
+      "isEstimated": false,
+      "description": "",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Sabanc%C4%B1_University_logo.svg",
+      "isCurrent": true,
+      "source": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Sabanc%C4%B1_University_logo.svg",
+        "title": "Wikimedia"
+      }
+    }
+  ],
+  "specialOccasions": [
+    {
+      "year": "2018",
+      "occasion": "20th Anniversary",
+      "description": "",
+      "imageUrl": "https://sabanciuniv.edu/sites/default/files/inline-images/3logo.png",
+      "source": {
+        "url": "https://sabanciuniv.edu/tr/20-yil-logosu",
+        "title": "20th year logo"
+      }
+    }
+  ]
+}

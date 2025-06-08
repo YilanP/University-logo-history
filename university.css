@@ -175,4 +175,67 @@
     .logo-image {
         max-width: 100%;
     }
+}
+
+.special-occasions-title {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.special-occasion {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.special-occasion .logo-details h3 {
+    color: var(--secondary-color);
+}
+
+.special-occasion-entry {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.special-occasion-entry .form-group {
+    margin-bottom: 1rem;
+}
+
+.special-occasion-entry label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.special-occasion-entry input,
+.special-occasion-entry textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.special-occasion-entry textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.special-occasion-entry .remove-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.special-occasion-entry .remove-button:hover {
+    background-color: #c82333;
 } 

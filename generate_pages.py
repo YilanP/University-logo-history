@@ -14,7 +14,10 @@ import mimetypes
 def download_image(url, output_path):
     """Download an image from a URL and save it to the specified path."""
     try:
-        response = requests.get(url, stream=True)
+        headers = {
+            'User-Agent': 'UniversityLogoHistoryWiki/1.0 (https://github.com/yourusername/university-logo-website; your@email.com) Python/3.x'
+        }
+        response = requests.get(url, stream=True, headers=headers)
         response.raise_for_status()
         
         # Get the content type from the response headers
@@ -57,7 +60,7 @@ def generate_university_page(university_id, university_data):
     images_dir = Path('images') / university_id
     images_dir.mkdir(parents=True, exist_ok=True)
     
-    # Download and save images
+    # Download and save images for regular logos
     for logo in university_data['logoHistory']:
         image_url = logo['imageUrl']
         # Get file extension from URL or content type
@@ -81,10 +84,39 @@ def generate_university_page(university_id, university_data):
                 if placeholder_path.exists():
                     shutil.copy(str(placeholder_path), str(image_path))
     
+    # Download and save images for special occasions
+    for occasion in university_data.get('specialOccasions', []):
+        image_url = occasion['imageUrl']
+        # Get file extension from URL or content type
+        parsed_url = urlparse(image_url)
+        file_extension = os.path.splitext(parsed_url.path)[1]
+        if not file_extension:
+            # Try to get extension from content type
+            response = requests.head(image_url)
+            content_type = response.headers.get('content-type', '')
+            file_extension = mimetypes.guess_extension(content_type) or '.png'
+        
+        # Create image filename using year and occasion
+        image_filename = f"special_{occasion['year']}_{occasion['occasion'].lower().replace(' ', '_')}{file_extension}"
+        image_path = images_dir / image_filename
+        
+        # Download image if it doesn't exist
+        if not image_path.exists():
+            if not download_image(image_url, str(image_path)):
+                # Use placeholder if download fails
+                placeholder_path = Path('images/placeholder.png')
+                if placeholder_path.exists():
+                    shutil.copy(str(placeholder_path), str(image_path))
+    
     # Sort logo history by year (newest first), handling estimated dates
     sorted_history = sorted(university_data['logoHistory'], 
                           key=lambda x: (int(x['year']), x.get('isEstimated', False)),
                           reverse=True)
+    
+    # Sort special occasions by year (newest first)
+    sorted_occasions = sorted(university_data.get('specialOccasions', []),
+                            key=lambda x: int(x['year']),
+                            reverse=True)
     
     logo_entries = []
     for logo in sorted_history:
@@ -112,6 +144,34 @@ def generate_university_page(university_id, university_data):
                 </div>
             </div>
         ''')
+    
+    # Add special occasions section if there are any
+    if sorted_occasions:
+        logo_entries.append('<h2 class="special-occasions-title">Special Occasions</h2>')
+        for occasion in sorted_occasions:
+            current_mark = ' <span class="current-logo">(Current)</span>' if occasion.get('isCurrent', False) else ''
+            
+            # Get the image path relative to the HTML file
+            image_filename = f"special_{occasion['year']}_{occasion['occasion'].lower().replace(' ', '_')}{os.path.splitext(urlparse(occasion['imageUrl']).path)[1]}"
+            image_path = f"../images/{university_id}/{image_filename}"
+            
+            logo_entries.append(f'''
+                <div class="logo-entry special-occasion">
+                    <img src="{image_path}" 
+                         alt="{university_data['name']} {occasion['occasion']} logo from {occasion['year']}" 
+                         class="logo-image">
+                    <div class="logo-details">
+                        <h3>{occasion['year']} - {occasion['occasion']}{current_mark}</h3>
+                        <p>{occasion['description']}</p>
+                        <a href="{occasion['source']['url']}" 
+                           target="_blank" 
+                           class="source-link" 
+                           rel="noopener noreferrer">
+                            Source: {occasion['source']['title']}
+                        </a>
+                    </div>
+                </div>
+            ''')
 
     page_content = f'''<!DOCTYPE html>
 <html lang="en">
