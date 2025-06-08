@@ -11,6 +11,43 @@ from urllib.parse import urlparse
 import mimetypes
 
 
+def get_file_extension(url):
+    """Determine the correct file extension for a given URL."""
+    # First try to get extension from URL
+    parsed_url = urlparse(url)
+    file_extension = os.path.splitext(parsed_url.path)[1].lower()
+    
+    if not file_extension:
+        # Try to get extension from content type
+        try:
+            response = requests.head(url)
+            content_type = response.headers.get('content-type', '').lower()
+            if 'image/png' in content_type:
+                file_extension = '.png'
+            elif 'image/jpeg' in content_type or 'image/jpg' in content_type:
+                file_extension = '.jpg'
+            elif 'image/gif' in content_type:
+                file_extension = '.gif'
+            elif 'image/svg+xml' in content_type:
+                file_extension = '.svg'
+            elif 'image/webp' in content_type:
+                file_extension = '.webp'
+            else:
+                # Default to .jpg for GitHub raw content
+                if 'raw.githubusercontent.com' in url:
+                    file_extension = '.jpg'
+                else:
+                    file_extension = '.png'
+        except Exception as e:
+            print(f"Error getting content type for {url}: {e}")
+            # Default to .jpg for GitHub raw content
+            if 'raw.githubusercontent.com' in url:
+                file_extension = '.jpg'
+            else:
+                file_extension = '.png'
+    
+    return file_extension
+
 def download_image(url, output_path):
     """Download an image from a URL and save it to the specified path."""
     try:
@@ -20,11 +57,11 @@ def download_image(url, output_path):
         response = requests.get(url, stream=True, headers=headers)
         response.raise_for_status()
         
-        # Get the content type from the response headers
-        content_type = response.headers.get('content-type', '')
-        if not content_type.startswith('image/'):
-            print(f"Warning: URL {url} does not point to an image (content-type: {content_type})")
-            return False
+        # Get the file extension
+        file_extension = get_file_extension(url)
+        
+        # Update output path with correct extension
+        output_path = str(Path(output_path).with_suffix(file_extension))
         
         # Create the directory if it doesn't exist
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -33,10 +70,10 @@ def download_image(url, output_path):
         with open(output_path, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
-        return True
+        return output_path
     except Exception as e:
         print(f"Error downloading image from {url}: {e}")
-        return False
+        return None
 
 def load_json_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -60,17 +97,14 @@ def generate_university_page(university_id, university_data):
     images_dir = Path('images') / university_id
     images_dir.mkdir(parents=True, exist_ok=True)
     
+    # Store downloaded image paths
+    downloaded_images = {}
+    
     # Download and save images for regular logos
     for logo in university_data['logoHistory']:
         image_url = logo['imageUrl']
-        # Get file extension from URL or content type
-        parsed_url = urlparse(image_url)
-        file_extension = os.path.splitext(parsed_url.path)[1]
-        if not file_extension:
-            # Try to get extension from content type
-            response = requests.head(image_url)
-            content_type = response.headers.get('content-type', '')
-            file_extension = mimetypes.guess_extension(content_type) or '.png'
+        # Get file extension
+        file_extension = get_file_extension(image_url)
         
         # Create image filename using year
         image_filename = f"{logo['year']}{file_extension}"
@@ -78,23 +112,23 @@ def generate_university_page(university_id, university_data):
         
         # Download image if it doesn't exist
         if not image_path.exists():
-            if not download_image(image_url, str(image_path)):
+            downloaded_path = download_image(image_url, str(image_path))
+            if downloaded_path:
+                downloaded_images[logo['year']] = downloaded_path
+            else:
                 # Use placeholder if download fails
                 placeholder_path = Path('images/placeholder.png')
                 if placeholder_path.exists():
                     shutil.copy(str(placeholder_path), str(image_path))
+                    downloaded_images[logo['year']] = str(image_path)
+        else:
+            downloaded_images[logo['year']] = str(image_path)
     
     # Download and save images for special occasions
     for occasion in university_data.get('specialOccasions', []):
         image_url = occasion['imageUrl']
-        # Get file extension from URL or content type
-        parsed_url = urlparse(image_url)
-        file_extension = os.path.splitext(parsed_url.path)[1]
-        if not file_extension:
-            # Try to get extension from content type
-            response = requests.head(image_url)
-            content_type = response.headers.get('content-type', '')
-            file_extension = mimetypes.guess_extension(content_type) or '.png'
+        # Get file extension
+        file_extension = get_file_extension(image_url)
         
         # Create image filename using year and occasion
         image_filename = f"special_{occasion['year']}_{occasion['occasion'].lower().replace(' ', '_')}{file_extension}"
@@ -102,11 +136,17 @@ def generate_university_page(university_id, university_data):
         
         # Download image if it doesn't exist
         if not image_path.exists():
-            if not download_image(image_url, str(image_path)):
+            downloaded_path = download_image(image_url, str(image_path))
+            if downloaded_path:
+                downloaded_images[f"special_{occasion['year']}"] = downloaded_path
+            else:
                 # Use placeholder if download fails
                 placeholder_path = Path('images/placeholder.png')
                 if placeholder_path.exists():
                     shutil.copy(str(placeholder_path), str(image_path))
+                    downloaded_images[f"special_{occasion['year']}"] = str(image_path)
+        else:
+            downloaded_images[f"special_{occasion['year']}"] = str(image_path)
     
     # Sort logo history by year (newest first), handling estimated dates
     sorted_history = sorted(university_data['logoHistory'], 
@@ -124,12 +164,12 @@ def generate_university_page(university_id, university_data):
         current_mark = ' <span class="current-logo">(Current)</span>' if logo.get('isCurrent', False) else ''
         
         # Get the image path relative to the HTML file
-        image_filename = f"{logo['year']}{os.path.splitext(urlparse(logo['imageUrl']).path)[1]}"
-        image_path = f"../images/{university_id}/{image_filename}"
+        image_path = downloaded_images[logo['year']]
+        relative_path = f"../{os.path.relpath(image_path, 'universities')}"
         
         logo_entries.append(f'''
             <div class="logo-entry">
-                <img src="{image_path}" 
+                <img src="{relative_path}" 
                      alt="{university_data['name']} logo from {logo['year']}" 
                      class="logo-image">
                 <div class="logo-details">
@@ -152,12 +192,12 @@ def generate_university_page(university_id, university_data):
             current_mark = ' <span class="current-logo">(Current)</span>' if occasion.get('isCurrent', False) else ''
             
             # Get the image path relative to the HTML file
-            image_filename = f"special_{occasion['year']}_{occasion['occasion'].lower().replace(' ', '_')}{os.path.splitext(urlparse(occasion['imageUrl']).path)[1]}"
-            image_path = f"../images/{university_id}/{image_filename}"
+            image_path = downloaded_images[f"special_{occasion['year']}"]
+            relative_path = f"../{os.path.relpath(image_path, 'universities')}"
             
             logo_entries.append(f'''
                 <div class="logo-entry special-occasion">
-                    <img src="{image_path}" 
+                    <img src="{relative_path}" 
                          alt="{university_data['name']} {occasion['occasion']} logo from {occasion['year']}" 
                          class="logo-image">
                     <div class="logo-details">

@@ -10,6 +10,15 @@
       "founded": "1999"
     },
     {
+      "id": "turkmen-agricultural-institute",
+      "name": "Turkmen Agricultural Institute",
+      "location": {
+        "country": "Tukmenistan",
+        "city": "Dashoguz"
+      },
+      "founded": "2011"
+    },
+    {
       "id": "ecole-polytechnique",
       "name": "École polytechnique",
       "location": {
